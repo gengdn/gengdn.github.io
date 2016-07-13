@@ -8,7 +8,7 @@
       <url>http://yoursite.com/2016/07/13/Hexo/</url>
       <content type="html"><![CDATA[<p>这是一篇有关如何使用Github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的Github项目中，域名注册，以及域名的绑定等功能。</p>
 <h1 id="依赖环境安装"><a href="#依赖环境安装" class="headerlink" title="依赖环境安装"></a>依赖环境安装</h1><h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p><a href="https://nodejs.org/en/" target="_blank" rel="external">下载Node.js</a></p>
-<p><img src="Hexo/1.png" alt="a"> </p>
+<p><img src="1.png" alt="a"> </p>
 <p>本文下载的版本是当时的最新版6.3.0。下载完成后安装即可。<br>查看是否安装成功:</p>
 <p><code>node -v</code></p>
 ]]></content>
