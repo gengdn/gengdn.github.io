@@ -1,12 +1,331 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="spring4," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="自动化装配Bean创建可被发现的beanjava中进行配置
+在需要被自动化装配的类上加上 @Component 注解，该注解表明该类会作为组件类，并告知spring要为这个类创建bean。
+
+123456789101112131415161718192021package com.gdn.demo2;import org.springframework.stereotype.Component;@">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring4(1) 装配Bean">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/Spring4-1/index.html">
+<meta property="og:site_name" content="My Sunshine">
+<meta property="og:description" content="自动化装配Bean创建可被发现的beanjava中进行配置
+在需要被自动化装配的类上加上 @Component 注解，该注解表明该类会作为组件类，并告知spring要为这个类创建bean。
+
+123456789101112131415161718192021package com.gdn.demo2;import org.springframework.stereotype.Component;@">
+<meta property="og:updated_time" content="2016-07-20T09:08:13.560Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring4(1) 装配Bean">
+<meta name="twitter:description" content="自动化装配Bean创建可被发现的beanjava中进行配置
+在需要被自动化装配的类上加上 @Component 注解，该注解表明该类会作为组件类，并告知spring要为这个类创建bean。
+
+123456789101112131415161718192021package com.gdn.demo2;import org.springframework.stereotype.Component;@">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/15/Spring4-1/"/>
+
+  <title> Spring4(1) 装配Bean | My Sunshine </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
   
   
     
-    <entry>
-      <title><![CDATA[Spring4(1) 装配Bean]]></title>
-      <url>http://yoursite.com/2016/07/15/Spring4-1/</url>
-      <content type="html"><![CDATA[<h1 id="自动化装配Bean"><a href="#自动化装配Bean" class="headerlink" title="自动化装配Bean"></a>自动化装配Bean</h1><h2 id="创建可被发现的bean"><a href="#创建可被发现的bean" class="headerlink" title="创建可被发现的bean"></a>创建可被发现的bean</h2><h3 id="java中进行配置"><a href="#java中进行配置" class="headerlink" title="java中进行配置"></a>java中进行配置</h3><ul>
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">My Sunshine</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spring4(1) 装配Bean
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-15T16:11:41+08:00" content="2016-07-15">
+              2016-07-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/15/Spring4-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/Spring4-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="自动化装配Bean"><a href="#自动化装配Bean" class="headerlink" title="自动化装配Bean"></a>自动化装配Bean</h1><h2 id="创建可被发现的bean"><a href="#创建可被发现的bean" class="headerlink" title="创建可被发现的bean"></a>创建可被发现的bean</h2><h3 id="java中进行配置"><a href="#java中进行配置" class="headerlink" title="java中进行配置"></a>java中进行配置</h3><ul>
 <li>在需要被自动化装配的类上加上 <code>@Component</code> 注解，该注解表明该类会作为组件类，并告知spring要为这个类创建bean。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package com.gdn.demo2;</div><div class="line"></div><div class="line">import org.springframework.stereotype.Component;</div><div class="line"></div><div class="line">@Component</div><div class="line">public class Man implements Person &#123;</div><div class="line">	private String name;</div><div class="line">	</div><div class="line">	public Man(String name) &#123;</div><div class="line">		super();</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -96,105 +415,447 @@
 <h3 id="XML中引入JavaConfig"><a href="#XML中引入JavaConfig" class="headerlink" title="XML中引入JavaConfig"></a>XML中引入JavaConfig</h3><p>实现在XML中引入JavaConfig 使用 <code>&lt;bean&gt;</code> 元素：</p>
 <p><code>&lt;bean class=&quot;yourConfig&quot;&gt;</code></p>
 <p><strong>在合并这些配置文件中，我们可以创建一个更高层次的配置文件，这个文件中不声明任何的bean，只是负责将多个配置组合起来。</strong></p>
-]]></content>
-    </entry>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring4/" rel="tag">#spring4</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/13/Hexo/" rel="next" title="Hexo环境搭建(windows)">
+                <i class="fa fa-chevron-left"></i> Hexo环境搭建(windows)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-    <entry>
-      <title><![CDATA[Hexo环境搭建(windows)]]></title>
-      <url>http://yoursite.com/2016/07/13/Hexo/</url>
-      <content type="html"><![CDATA[<p>这是一篇有关如何使用github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的github项目中，域名注册，以及域名的绑定等功能。<br><a id="more"></a></p>
-<h1 id="依赖环境安装"><a href="#依赖环境安装" class="headerlink" title="依赖环境安装"></a>依赖环境安装</h1><h2 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h2><p><a href="https://nodejs.org/en/" target="_blank" rel="external">下载Node.js</a></p>
-<img src="/2016/07/13/Hexo/1.png" alt="1.png" title="">
-<p>本文下载的版本是当时的最新版6.3.0。下载完成后安装即可。</p>
-<p>查看是否安装成功:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
-<p>出现如下图所示内容代表Node.js安装成功</p>
-<img src="/2016/07/13/Hexo/2.png" alt="2.png" title="">
-<h2 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h2><p>请自行谷歌。</p>
-<p>查看是否安装成功:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version</div></pre></td></tr></table></figure>
-<p>出现如下图所示内容代表Git安装成功</p>
-<img src="/2016/07/13/Hexo/3.png" alt="3.png" title="">
-<h2 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h2><p>以管理员身份运行cmd执行如下命令</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>最后会出现大概这么一条信息 <img src="/2016/07/13/Hexo/4.png" alt="4.png" title=""></p>
-<p>说明hexo 已经安装成功了。</p>
-<h3 id="初始化Hexo"><a href="#初始化Hexo" class="headerlink" title="初始化Hexo"></a>初始化Hexo</h3><p>接下来，我们选择一个硬盘目录作为存放我们博客的路径，例如我手动在E盘目录下建了一个blog的文件夹，然<br>后执行以下命令完成hexo 的初始化。</p>
-<blockquote>
-<p>注：如不指定 e:\blog 则在当前文件夹完成hexo的初始化</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init e:\blog</div></pre></td></tr></table></figure>
-<p>进入该目录，执行如下命令，系统会可以根据package.json文件中dependencies的配置安装所有依赖包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure></p>
-<h3 id="生成部署文件"><a href="#生成部署文件" class="headerlink" title="生成部署文件"></a>生成部署文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g</div></pre></td></tr></table></figure>
-<h3 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#生成静态文件，会在当前目录下生成一个新的叫做public的文件夹</div><div class="line">hexo generate (hexo g) </div><div class="line"></div><div class="line">#启动本地web服务，用于博客的预览</div><div class="line">hexo server (hexo s) </div><div class="line"></div><div class="line">#部署博客到远端服务器</div><div class="line">hexo deploy (hexo d)</div><div class="line"></div><div class="line">#新建文章</div><div class="line">hexo new fileName  </div><div class="line"></div><div class="line">#新建页面</div><div class="line">hexo new page</div></pre></td></tr></table></figure>
-<p><a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external">更多指令&gt;&gt;</a></p>
-<h1 id="部署博客到github-Pages"><a href="#部署博客到github-Pages" class="headerlink" title="部署博客到github Pages"></a>部署博客到github Pages</h1><p>每个帐号只能有一个仓库来存放个人主页，而且仓库的名字必须是username/username.github.io，这是特殊的命名约定。你可以通过<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 来访问你的个人主页。</p>
-<h2 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置SSH</h2><p>上传文件需要配置ssh key，不然无法上传。 </p>
-<p>首先先检查一下本地是否已经存在ssh key,在Git Bash输入以下指令（任意位置点击鼠标右键），检查是否已经存在了SSH keys。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al ~/.ssh</div></pre></td></tr></table></figure>
-<img src="/2016/07/13/Hexo/5.png" alt="5.png" title="">
-<p>如上图所示，由于我已经配置过，所以存在红框内的三个文件，我们直接把这三个文件删掉即可。</p>
-<p>删除完成后，设置name和email</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name xxx</div><div class="line">git config --global user.email xxx@xxx.com</div></pre></td></tr></table></figure>
-<blockquote>
-<p>注：需要注意的是这里的name是随意的，邮箱是你的联系邮箱，与github上的邮箱没有什么联系。</p>
-</blockquote>
-<h2 id="生成ssh-密钥"><a href="#生成ssh-密钥" class="headerlink" title="生成ssh 密钥"></a>生成ssh 密钥</h2><p>输入以下指令（邮箱就是你注册github时候的邮箱）后，回车：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C xxx@xxx.com</div></pre></td></tr></table></figure>
-<p>一路按回车键即可，如果设置了密码请记住。 </p>
-<p>这一步在~/.ssh/下生成了两个文件id_rsa 和 id_rsa.pub</p>
-<h2 id="将秘钥拷贝至github"><a href="#将秘钥拷贝至github" class="headerlink" title="将秘钥拷贝至github"></a>将秘钥拷贝至github</h2><p>拷贝id_rsa.pub的内容拷贝至github上，如下图<br><img src="/2016/07/13/Hexo/6.png" alt="6.png" title=""><br><img src="/2016/07/13/Hexo/7.png" alt="7.png" title=""></p>
-<h2 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h2><p>输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@github.com</div></pre></td></tr></table></figure>
-<p>成功的话会显示以下的大致内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">The authenticity of host &apos;github.com (192.30.252.128)&apos; can&apos;t be established.</div><div class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</div><div class="line">Are you sure you want to continue connecting (yes/no)? yes</div><div class="line">Warning: Permanently added &apos;github.com,192.30.252.128&apos; (RSA) to the list of known hosts.</div><div class="line">Hi git-xuhao! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</div><div class="line">Connection to github.com closed.</div></pre></td></tr></table></figure>
-<h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><h3 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="配置_config.yml"></a>配置_config.yml</h3><p>编辑hexo初始化目录下的_config.yml，修改Deployment部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#Deployment</div><div class="line">##Docs: https://hexo.io/docs/deployment.html</div><div class="line">#ssh://git@github.com/gengdn/gengdn.github.io</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: ssh:</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-<p>其中，repo是我们刚刚建立的远程仓库，换成你自己的仓库，同时因为刚才配置了SSH-Key，所以必须是SSH形式的URL。值得注意的是，每一个: 后面都必须有一个空格，否则会引起错误。</p>
-<h3 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h3><p><code>npm install hexo-deployer-git --save</code></p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p><code>hexo deploy</code></p>
-<p>现在我们可以通过访问 <a href="http://gengdn.github.io/" target="_blank" rel="external">http://gengdn.github.io/</a> 来访问我们自己的博客啦,可以看到我们的博客已成功搭建，接下来就是一些主题的优化和配置呢。</p>
-<h1 id="添加搜索（Local-Search）"><a href="#添加搜索（Local-Search）" class="headerlink" title="添加搜索（Local Search）"></a>添加搜索（Local Search）</h1><h2 id="安装-hexo-generator-search"><a href="#安装-hexo-generator-search" class="headerlink" title="安装 hexo-generator-search"></a>安装 hexo-generator-search</h2><p>在站点的根目录下执行以下命令：</p>
-<p><code>npm install hexo-generator-search --save</code></p>
-<h2 id="编辑站点配置文件（根目录下的-config-yml）"><a href="#编辑站点配置文件（根目录下的-config-yml）" class="headerlink" title="编辑站点配置文件（根目录下的_config.yml）"></a>编辑站点配置文件（根目录下的_config.yml）</h2><p>新增以下内容到任意位置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">  path: search.xml</div><div class="line">  field: post</div></pre></td></tr></table></figure>
-<h1 id="功能点记录"><a href="#功能点记录" class="headerlink" title="功能点记录"></a>功能点记录</h1><h2 id="tags和categories-页面无法显示"><a href="#tags和categories-页面无法显示" class="headerlink" title="tags和categories 页面无法显示"></a>tags和categories 页面无法显示</h2><p>在hexo初始化的根目录下执行如下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo new page tags</div><div class="line">hexo new page categories</div></pre></td></tr></table></figure>
-<p>执行完上述两条命令之后会在source文件下生成两个对应的文件夹，修改文件夹内的index.md文件，将如下内容拷贝纸对应的index.md即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: categories</div><div class="line">date: 2016-07-13 20:58:32</div><div class="line">type: &quot;categories&quot;</div><div class="line">comments: true</div><div class="line">---</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: tags</div><div class="line">date: 2016-07-13 20:58:07</div><div class="line">type: &quot;tags&quot;</div><div class="line">comments: true</div><div class="line">---</div></pre></td></tr></table></figure>
-<h2 id="添加本地资源"><a href="#添加本地资源" class="headerlink" title="添加本地资源"></a>添加本地资源</h2><h3 id="资源文件夹"><a href="#资源文件夹" class="headerlink" title="资源文件夹"></a>资源文件夹</h3><p>Hexo提供了组织化的方式来管理资源,资源可以分布在各个文章上，通过将 config.yml文件中的 post_asset_folder 选项设为 true 来打开</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">post_asset_folder: true</div></pre></td></tr></table></figure>
-<p>资源文件管理功能打开后，Hexo将会在每一次通过 hexo new title命令创建新文章时自动创建一个文件夹,这个资源文件夹与 markdown 文件同名。将所有与文章有关的资源放在这个关联文件夹中，可以通过相对路径来引用它们</p>
-<h3 id="资源的引用"><a href="#资源的引用" class="headerlink" title="资源的引用"></a>资源的引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_img slug [title] %&#125;</div><div class="line">&#123;% asset_link slug [title] %&#125;</div><div class="line">&#123;% asset_path slug %&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>注：slug 替换为资源路径<br>[title] 替换为文字，可为空</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg:  &#123;% asset_img 5.png  %&#125;</div></pre></td></tr></table></figure>
-<h1 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h1><ul>
-<li><a href="http://ms.csdn.net/geek/72697" target="_blank" rel="external">基于Hexo+GitHub Pages 免费搭建个人博客最强教程</a></li>
-<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT主题</a></li>
-<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a></li>
-</ul>
-]]></content>
-    </entry>
+      <div class="ds-thread" data-thread-key="2016/07/15/Spring4-1/"
+           data-title="Spring4(1) 装配Bean" data-url="http://yoursite.com/2016/07/15/Spring4-1/">
+      </div>
     
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>http://yoursite.com/2016/07/13/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    </entry>
-    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/head.JPG"
+               alt="gengdn" />
+          <p class="site-author-name" itemprop="name">gengdn</p>
+          <p class="site-description motion-element" itemprop="description">活到老，玩到老。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自动化装配Bean"><span class="nav-number">1.</span> <span class="nav-text">自动化装配Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建可被发现的bean"><span class="nav-number">1.1.</span> <span class="nav-text">创建可被发现的bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java中进行配置"><span class="nav-number">1.1.1.</span> <span class="nav-text">java中进行配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过xml进行配置"><span class="nav-number">1.1.2.</span> <span class="nav-text">通过xml进行配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动装配"><span class="nav-number">1.2.</span> <span class="nav-text">自动装配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显示装配Bean"><span class="nav-number">2.</span> <span class="nav-text">显示装配Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过java配置进行显示装配"><span class="nav-number">2.1.</span> <span class="nav-text">通过java配置进行显示装配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明（创建）Bean"><span class="nav-number">2.1.1.</span> <span class="nav-text">声明（创建）Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现注入（装配）"><span class="nav-number">2.1.2.</span> <span class="nav-text">实现注入（装配）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过XML配置进行显示装配"><span class="nav-number">2.2.</span> <span class="nav-text">通过XML配置进行显示装配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明（创建）Bean-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">声明（创建）Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现注入（装配）-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">实现注入（装配）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注入引用"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">注入引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注入字面量"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">注入字面量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装配集合"><span class="nav-number">2.2.3.</span> <span class="nav-text">装配集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置属性"><span class="nav-number">2.2.4.</span> <span class="nav-text">设置属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#混合配置"><span class="nav-number">3.</span> <span class="nav-text">混合配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaCinfig中合并"><span class="nav-number">3.1.</span> <span class="nav-text">JavaCinfig中合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaCinfig中引入JavaCinfig"><span class="nav-number">3.1.1.</span> <span class="nav-text">JavaCinfig中引入JavaCinfig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaCinfig中引入XML"><span class="nav-number">3.1.2.</span> <span class="nav-text">JavaCinfig中引入XML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML中合并"><span class="nav-number">3.2.</span> <span class="nav-text">XML中合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XML中引入XML"><span class="nav-number">3.2.1.</span> <span class="nav-text">XML中引入XML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML中引入JavaConfig"><span class="nav-number">3.2.2.</span> <span class="nav-text">XML中引入JavaConfig</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gengdn</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
   
   
-</search>
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gengdn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
