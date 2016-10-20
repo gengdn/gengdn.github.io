@@ -271,6 +271,109 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/20/Linux下scp命令跳过登陆验证/" itemprop="url">
+                  Linux下scp命令跳过登陆验证
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-20T16:40:12+08:00" content="2016-10-20">
+              2016-10-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/20/Linux下scp命令跳过登陆验证/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/20/Linux下scp命令跳过登陆验证/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Linux下执行scp命令时跳过登陆验证"><a href="#Linux下执行scp命令时跳过登陆验证" class="headerlink" title="Linux下执行scp命令时跳过登陆验证"></a>Linux下执行scp命令时跳过登陆验证</h1><h2 id="生成安全信任关系证书"><a href="#生成安全信任关系证书" class="headerlink" title="生成安全信任关系证书"></a>生成安全信任关系证书</h2><p>1.在要执行scp命令的机器上 root 用户执行 <code>ssh-keygen</code> 命令，生成建立安全信任关系的证书。<br>[root@Client root]# ssh-keygen<br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/root/.ssh/id_rsa):<br>Enter passphrase (empty for no passphrase):            &lt;– 直接输入回车<br>Enter same passphrase again:                           &lt;– 直接输入回车<br>Your identification has been saved in /root/.ssh/id_rsa.<br>Your public key has been saved in /root/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>49:9c:8a:8f:bc:19:5e:8c:c0:10:d3:15:60:a3:32:1c root@Client<br>[root@Client root]#<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/20/Linux下scp命令跳过登陆验证/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/19/hello-world/" itemprop="url">
                   Hello World
                 </a>
@@ -728,7 +831,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -745,7 +848,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

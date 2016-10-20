@@ -4,6 +4,18 @@
   
     
     <entry>
+      <title><![CDATA[Linux下scp命令跳过登陆验证]]></title>
+      <url>http://yoursite.com/2016/10/20/Linux%E4%B8%8Bscp%E5%91%BD%E4%BB%A4%E8%B7%B3%E8%BF%87%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/</url>
+      <content type="html"><![CDATA[<h1 id="Linux下执行scp命令时跳过登陆验证"><a href="#Linux下执行scp命令时跳过登陆验证" class="headerlink" title="Linux下执行scp命令时跳过登陆验证"></a>Linux下执行scp命令时跳过登陆验证</h1><h2 id="生成安全信任关系证书"><a href="#生成安全信任关系证书" class="headerlink" title="生成安全信任关系证书"></a>生成安全信任关系证书</h2><p>1.在要执行scp命令的机器上 root 用户执行 <code>ssh-keygen</code> 命令，生成建立安全信任关系的证书。<br>[root@Client root]# ssh-keygen<br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/root/.ssh/id_rsa):<br>Enter passphrase (empty for no passphrase):            &lt;– 直接输入回车<br>Enter same passphrase again:                           &lt;– 直接输入回车<br>Your identification has been saved in /root/.ssh/id_rsa.<br>Your public key has been saved in /root/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>49:9c:8a:8f:bc:19:5e:8c:c0:10:d3:15:60:a3:32:1c root@Client<br>[root@Client root]#<br><a id="more"></a></p>
+<p>注意：在程序提示输入passphrase时直接输入回车，表示无证书密码。<br>上述命令将生成私钥证书id_rsa和公钥证书id_rsa.pub，存放在用户家目录的.ssh子目录中。</p>
+<h2 id="复制公钥证书"><a href="#复制公钥证书" class="headerlink" title="复制公钥证书"></a>复制公钥证书</h2><p>将公钥证书id_rsa.pub复制到机器Server的root家目录的.ssh子目录中（无此目录需要创建），同时将文件名更换为authorized_keys。</p>
+<p>[root@Client root]# scp -p .ssh/id_rsa.pub root@192.168.3.206:/root/.ssh/authorized_keys<br>root@192.168.3.206’s password:          &lt;– 输入机器Server的root用户密码<br>id_rsa.pub           100% |<strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong>|   218       00:00<br>[root@Client root]#</p>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>执行 ssh-copy-id root@10.10.60.119</p>
+<p>如果不成功<br>修改./ssh 文件夹的权限为700<br>修改authorized_keys 文件的权限为600</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hello World]]></title>
       <url>http://yoursite.com/2016/10/19/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
