@@ -271,6 +271,106 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/20/Linux下scp命令跳过登陆验证/" itemprop="url">
+                  Linux下scp命令跳过登陆验证
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-20T16:40:12+08:00" content="2016-10-20">
+              2016-10-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/20/Linux下scp命令跳过登陆验证/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/20/Linux下scp命令跳过登陆验证/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/19/hello-world/" itemprop="url">
                   Hello World
                 </a>
@@ -424,46 +524,15 @@
 
       
         
-          
-            <h1 id="Spring-MVC-请求"><a href="#Spring-MVC-请求" class="headerlink" title="Spring MVC 请求"></a>Spring MVC 请求</h1><p>请求的第一站是Spring 的 DispatcherServlet。</p>
+          <h1 id="Spring-MVC-请求"><a href="#Spring-MVC-请求" class="headerlink" title="Spring MVC 请求"></a>Spring MVC 请求</h1><p>请求的第一站是Spring 的 DispatcherServlet。</p>
 <p>DispatcherServlet 的任务是将请求发送给Spring MVC控制器（controller），DispatcherServlet 根据处理器映射来决定将请求发送到哪里。</p>
 <p>到了控制器，请求会卸下负载（用户提交的信息），控制器开始处理请求。</p>
-<p>控制器在完成逻辑处理之后，通常会产生一些信息，信息需要发送给一个视图（通常是JSP），用来展示给用户。</p>
-<p>控制器做的最后一件事情就是将模型数据打包，并标示出用于渲染输出的视图名，接下来控制器会将请求连同模型和视图名发送回 DispatcherServlet。</p>
-<p>DispatcherServlet 将使用视图解析器将逻辑视图名匹配为一个特定的视图实现。</p>
-<p>最后一站是视图的实现，它将模型数据交付给视图进行渲染输出。</p>
-<h1 id="搭建Spring-MVC"><a href="#搭建Spring-MVC" class="headerlink" title="搭建Spring MVC"></a>搭建Spring MVC</h1><p>DispatcherServlet 是Spring MVC的核心，他负责将请求路由到其他的组件当中。</p>
-<h2 id="使用java-配置-DispatcherServlet（仅适用于Servlet3-0及以上的环境中）"><a href="#使用java-配置-DispatcherServlet（仅适用于Servlet3-0及以上的环境中）" class="headerlink" title="使用java 配置 DispatcherServlet（仅适用于Servlet3.0及以上的环境中）"></a>使用java 配置 DispatcherServlet（仅适用于Servlet3.0及以上的环境中）</h2><p>第一步：将 DispatcherServlet 配置在 Servlet容器中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;</div><div class="line"></div><div class="line">public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer&#123;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected Class&lt;?&gt;[] getRootConfigClasses() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		return new Class&lt;?&gt;[]&#123; RootConfig.class&#125;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected Class&lt;?&gt;[] getServletConfigClasses() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		return new Class&lt;?&gt;[]&#123; WebConfig.class&#125;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	protected String[] getServletMappings() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		return new String[]&#123;&quot;/&quot;,&quot;&quot;&#125;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述代码究竟是如何工作的呢？</p>
-<blockquote>
-<p> 在Servlet 3.0环境中，容器会在类路径下查找实现了 javax.servlet.ServletContainerInitializer 接口的类，如果能发现，就会用它来配置Servlet 容器</p>
-<p> Spring 提供了这个接口的实现，名为 SpringServletContainerInitializer ，这个了会反过来查找实现了 WebApplicationInitializer 的类并将配置任务交给它们来完成。</p>
-<p> 上述代码中继承的类就是在Spring 3.2 中引入的一个 WebApplicationInitializer 的基础实现。</p>
-<p> 因此当部署到Servlet 3.0 容器中的时候，容器就会自动发现它并用它来配置Servlet上下文。</p>
-</blockquote>
-<p>第二步：启用Spring MVC</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">import org.springframework.context.annotation.Bean;</div><div class="line">import org.springframework.context.annotation.ComponentScan;</div><div class="line">import org.springframework.context.annotation.Configuration;</div><div class="line">import org.springframework.web.servlet.ViewResolver;</div><div class="line">import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;</div><div class="line">import org.springframework.web.servlet.config.annotation.EnableWebMvc;</div><div class="line">import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;</div><div class="line">import org.springframework.web.servlet.view.InternalResourceViewResolver;</div><div class="line"></div><div class="line">@Configuration</div><div class="line">@EnableWebMvc     //启用Spring MVC</div><div class="line">@ComponentScan(&quot;spittr.web&quot;) //启用组件扫描</div><div class="line">public class WebConfig extends WebMvcConfigurerAdapter&#123;</div><div class="line"></div><div class="line">	@Bean    //配置JSP视图解析器</div><div class="line">	public ViewResolver viewResolver()&#123;</div><div class="line">		InternalResourceViewResolver resolver = new InternalResourceViewResolver();</div><div class="line">		resolver.setPrefix(&quot;/WEB-INF/views/&quot;);</div><div class="line">		resolver.setSuffix(&quot;.jsp&quot;);</div><div class="line">		resolver.setExposeContextBeansAsAttributes(true);</div><div class="line">		return resolver;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	@Override   //配置静态资源处理</div><div class="line">	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		configurer.enable();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p>第三步：配置RootConfig </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import org.springframework.context.annotation.ComponentScan;</div><div class="line">import org.springframework.context.annotation.ComponentScan.Filter;</div><div class="line">import org.springframework.web.servlet.config.annotation.EnableWebMvc;</div><div class="line">import org.springframework.context.annotation.Configuration;</div><div class="line">import org.springframework.context.annotation.FilterType;</div><div class="line"></div><div class="line">@Configuration</div><div class="line">@ComponentScan(basePackages = &#123; &quot;spittr&quot; &#125;, excludeFilters = &#123;</div><div class="line">		@Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class) &#125;)</div><div class="line">public class RootConfig &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通过以上三步，我们的Spring MVC就已经初步搭建完成了。</p>
-<p><strong>值得注意的是，如果在第一步配置中，getServletMappings 方法中只映射了 <code>/</code>,当你在你的controller中也只映射了斜线的话，这并不能拦截根路径的请求，他会默认跳转到webRoot目录下的index.jsp,除非删除这个index.jsp或者在 getServletMappings 方法中加上多空字符串的映射。</strong></p>
-<h1 id="接受请求的输入"><a href="#接受请求的输入" class="headerlink" title="接受请求的输入"></a>接受请求的输入</h1><p>Spring MVC 中允许以多种方式将客户端中的数据传送到控制器的处理器方法中，包括：<br>1.查询参数<br>2.表单参数<br>3.路径变量</p>
-<blockquote>
-<p>针对查询参数，可以使用 <code>RequestParam</code> 注解来接收，不传参数时可以通过 <code>defaultValue</code> 指定默认值。</p>
-</blockquote>
-<p>eg: </p>
-<p><code>public void getSpittle(@RequestParam(&quot;max&quot;) long max)</code></p>
-<p><code>public void getSpittle(@RequestParam(value=&quot;max&quot;,defaultValue=20) long max)</code></p>
-<blockquote>
-<p>针对路径变量，可以使用占位符 <code>{}</code>,占位符部分可以是任意值。</p>
-</blockquote>
-<p>eg:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value=&quot;/&#123;spittleId&#125;&quot;)</div><div class="line">public void getSpittle(@pathVariable（&quot;spittleId&quot;） long spittleId)</div></pre></td></tr></table></figure>
-<p><code>@pathVariable</code> 注解表示不管占位符部分的值是什么，都会传递到处理器方法的 <code>spittleId</code> 参数中，如对“spittles/12345”发送get请求，那么spittleId 的值为 12345.</p>
-<p>如果方法的参数名称和占位符的名称相同，可以去掉<code>@pathVariable</code> 中的value 属性。</p>
-
-          
+<p>控制器在完成逻辑处理之后，通常会产生一些信息，信息需要发送给一个视图（通常是JSP），用来展示给用户。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/09/Spring MVC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -759,7 +828,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
