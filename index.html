@@ -271,115 +271,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/22/Jvm_1_内存区域与内存溢出异常/" itemprop="url">
-                  深入理解虚拟机_1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-22T16:11:41+08:00" content="2016-10-22">
-              2016-10-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/22/Jvm_1_内存区域与内存溢出异常/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/22/Jvm_1_内存区域与内存溢出异常/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>了解和思考Java技术体系中这些技术特性是如何实现的，认识这些技术运作的本质，是自己思考“程序这样写好比好”的基础和前提。当我们在使用一种技术时，如果不在依赖于书本和他人就能得到这些问题的答案，那才算上升到了“不惑”的境界。</p>
-<h1 id="Java内存区域与内存溢出异常"><a href="#Java内存区域与内存溢出异常" class="headerlink" title="Java内存区域与内存溢出异常"></a>Java内存区域与内存溢出异常</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><pre><code>程序计数器是一块较小的内存空间，它可以看作是当前线程所执行字节码的行号指示器。
-
-Java虚拟机的多线程是通过线程的轮流切换并分配处理器执行时间的方式来实现的，因此为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。
-
-**此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。**
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/22/Jvm_1_内存区域与内存溢出异常/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/10/20/Linux下scp命令跳过登陆验证/" itemprop="url">
                   Linux下scp命令跳过登陆验证
                 </a>
@@ -642,6 +533,109 @@ Java虚拟机的多线程是通过线程的轮流切换并分配处理器执行�
 <p>控制器在完成逻辑处理之后，通常会产生一些信息，信息需要发送给一个视图（通常是JSP），用来展示给用户。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/09/Spring MVC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/15/Jvm_1_内存区域与内存溢出异常/" itemprop="url">
+                  Jvm_1_内存区域与内存溢出异常
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-15T16:11:41+08:00" content="2016-07-15">
+              2016-07-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/15/Jvm_1_内存区域与内存溢出异常/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/Jvm_1_内存区域与内存溢出异常/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>　　了解和思考Java技术体系中这些技术特性是如何实现的，认识这些技术运作的本质，是自己思考“程序这样写好比好”的基础和前提。当我们在使用一种技术时，如果不在依赖于书本和他人就能得到这些问题的答案，那才算上升到了“不惑”的境界。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/15/Jvm_1_内存区域与内存溢出异常/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
