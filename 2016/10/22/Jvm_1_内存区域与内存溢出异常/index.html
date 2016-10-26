@@ -96,7 +96,7 @@ Java虚拟机的多线程是通过线程的轮流">
 Java内存区域与内存溢出异常运行时数据区域程序计数器程序计数器是一块较小的内存空间，它可以看作是当前线程所执行字节码的行号指示器。
 
 Java虚拟机的多线程是通过线程的轮流">
-<meta property="og:updated_time" content="2016-10-26T11:50:58.140Z">
+<meta property="og:updated_time" content="2016-10-26T11:56:56.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解虚拟机_1">
 <meta name="twitter:description" content="了解和思考Java技术体系中这些技术特性是如何实现的，认识这些技术运作的本质，是自己思考“程序这样写好比好”的基础和前提。当我们在使用一种技术时，如果不在依赖于书本和他人就能得到这些问题的答案，那才算上升到了“不惑”的境界。
@@ -331,8 +331,8 @@ Java虚拟机的多线程是通过线程的轮流">
 Java虚拟机的多线程是通过线程的轮流切换并分配处理器执行时间的方式来实现的，因此为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。
 
 **此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。**
-&lt;!-- more --&gt;
-</code></pre><h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><pre><code>与程序计数器一样，Java虚拟机栈也是线程私有的。它的生命周期与线程相同。
+</code></pre><a id="more"></a>
+<h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><pre><code>与程序计数器一样，Java虚拟机栈也是线程私有的。它的生命周期与线程相同。
 
 虚拟机栈描述的是Java方法执行的内存模型：每个方法在执行的同时都会创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程。
 
