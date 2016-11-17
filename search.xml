@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[Redis 安装（linux）]]></title>
+      <url>http://yoursite.com/2016/10/26/Redis%E5%AE%89%E8%A3%85%EF%BC%88Linux%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="Linux下redis安装"><a href="#Linux下redis安装" class="headerlink" title="Linux下redis安装"></a>Linux下redis安装</h1><p>下载redis安装包，本文中所有安装包为 redis-3.2.1.tar.gz。</p>
+<p>解压</p>
+<p>检查是否安装gcc<br>执行gcc命令判断，如果未安装，执行 yum -y install gcc</p>
+<p>进入解压后的根目录下 执行make命令</p>
+<p>进入src目录下 执行make install 命令</p>
+<p>编辑 根目录下redis.conf<br>daemonize yes   //改为守护进程</p>
+<p>回到根目录下执行 redis-server redis.conf 启动服务</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Jvm_1_内存区域与内存溢出异常]]></title>
       <url>http://yoursite.com/2016/10/22/Jvm_1_%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/</url>
       <content type="html"><![CDATA[<p>　　了解和思考Java技术体系中这些技术特性是如何实现的，认识这些技术运作的本质，是自己思考“程序这样写好比好”的基础和前提。当我们在使用一种技术时，如果不在依赖于书本和他人就能得到这些问题的答案，那才算上升到了“不惑”的境界。<br><a id="more"></a></p>
