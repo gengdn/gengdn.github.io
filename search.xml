@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Redis 安装（linux）]]></title>
       <url>http://yoursite.com/2016/10/26/Redis%E5%AE%89%E8%A3%85%EF%BC%88Linux%EF%BC%89/</url>
-      <content type="html"><![CDATA[<h1 id="Linux下redis安装"><a href="#Linux下redis安装" class="headerlink" title="Linux下redis安装"></a>Linux下redis安装</h1><p>下载redis安装包，本文中所有安装包为 redis-3.2.1.tar.gz。</p>
+      <content type="html"><![CDATA[<h1 id="Linux下redis安装"><a href="#Linux下redis安装" class="headerlink" title="Linux下redis安装"></a>Linux下redis安装</h1><p>下载redis安装包，本文中所有安装包为 redis-3.2.1.tar.gz。<br><a id="more"></a></p>
 <p>解压</p>
 <p>检查是否安装gcc<br>执行gcc命令判断，如果未安装，执行 yum -y install gcc</p>
 <p>进入解压后的根目录下 执行make命令</p>
