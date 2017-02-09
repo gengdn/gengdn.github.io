@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Linux nfs 挂载]]></title>
       <url>http://yoursite.com/2017/02/10/Linux-nfs%E6%8C%82%E8%BD%BD/</url>
-      <content type="html"><![CDATA[<h2 id="nfs-挂载"><a href="#nfs-挂载" class="headerlink" title="nfs 挂载"></a>nfs 挂载</h2><h3 id="检查-rpcbind-和-nfs服务是否安装"><a href="#检查-rpcbind-和-nfs服务是否安装" class="headerlink" title="检查 rpcbind  和 nfs服务是否安装"></a>检查 rpcbind  和 nfs服务是否安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep rpcbind</div><div class="line">rpm -qa | grep nfs</div></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<h2 id="文件服务器"><a href="#文件服务器" class="headerlink" title="文件服务器"></a>文件服务器</h2><h3 id="检查-rpcbind-和-nfs服务是否安装"><a href="#检查-rpcbind-和-nfs服务是否安装" class="headerlink" title="检查 rpcbind  和 nfs服务是否安装"></a>检查 rpcbind  和 nfs服务是否安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep rpcbind</div><div class="line">rpm -qa | grep nfs</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="修改文件服务器的-etc-exports-文件"><a href="#修改文件服务器的-etc-exports-文件" class="headerlink" title="修改文件服务器的 /etc/exports 文件"></a>修改文件服务器的 /etc/exports 文件</h3><p>确保上述两个服务安装之后  修改文件服务器的 /etc/exports 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/exports</div></pre></td></tr></table></figure></p>
 <p>加入内容格式：&lt;输出目录&gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg：/bingoLink/elearning 172.133.1.0/24(rw,async,no_root_squash,no_subtree_check)</div></pre></td></tr></table></figure></p>
@@ -31,6 +31,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># showmount -a　　　　//显示已经与客户端连接上的目录信息</div></pre></td></tr></table></figure>
 <p>客户端使用showmount命令查询NFS的共享状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># showmount -e NFS服务器IP</div><div class="line">eg：showmount -e 172.133.41.171</div></pre></td></tr></table></figure></p>
 <h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="http://www.cnblogs.com/mchina/archive/2013/01/03/2840040.html" target="_blank" rel="external">http://www.cnblogs.com/mchina/archive/2013/01/03/2840040.html</a></p>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="修改-etc-fstab文件"><a href="#修改-etc-fstab文件" class="headerlink" title="修改 /etc/fstab文件"></a>修改 /etc/fstab文件</h3><p>增加如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">172.20.114.155:/home/bingo/link/go /home/bingo/link/soft/package/webapp/go nfs  auto,nolock,intr,timeo=5,retrans=5,actimeo=10,retry=5,rsize=1048576,wsize=1048576,noatime,nodiratime,async 0       0</div></pre></td></tr></table></figure></p>
+<p>修改完成后重启生效，如果不想重启，可以先使用mount命令挂载上，等待重启后自动生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount -t nfs 172.20.114.155:/home/bingo/link/go /home/bingo/link/soft</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -296,6 +298,21 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>http://yoursite.com/2016/11/16/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo环境搭建(windows)]]></title>
       <url>http://yoursite.com/2016/11/16/Hexo/</url>
       <content type="html"><![CDATA[<p>这是一篇有关如何使用github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的github项目中，域名注册，以及域名的绑定等功能。<br><a id="more"></a></p>
@@ -373,21 +390,6 @@
 <li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT主题</a></li>
 <li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a></li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>http://yoursite.com/2016/11/16/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     </entry>
     
