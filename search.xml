@@ -5,14 +5,14 @@
     
     <entry>
       <title><![CDATA[Jvm_3_垃圾收集算法]]></title>
-      <url>http://yoursite.com/2016/12/21/Jvm_3_%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</url>
+      <url>http://yoursite.com/2016/12/26/Jvm_3_%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h1><h2 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h2><p>最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。<br><a id="more"></a></p>
 <p>之所以说它是最基础的收集算法，是因为后续的收集算法都是基于这种思路并对其不足进行改进而得到的。它的不足主要有两个：<strong>一个是效率问题</strong>，标记和清除两个过程效率都不高；另一个是<strong>空间问题</strong>，标记清除之后产生大量不连续的内存碎片，空间碎片太多可能会导致以后再程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作</p>
-<img src="/2016/12/21/Jvm_3_垃圾收集算法/1.jpg" alt="1.jpg" title="">
+<img src="/2016/12/26/Jvm_3_垃圾收集算法/1.jpg" alt="1.jpg" title="">
 <h2 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h2><p><strong>为了解决效率问题</strong>，一种称为“复制”（copying）的算法出现了，<strong>它将可用内存按容量划分为大小相等的两块</strong>，每次只使用其中的一块，当着一块内存用完了，<strong>将还存活的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉</strong>。这样使得每次都是对整个半区进行内存回收，内存分配时也不用考虑内存碎片等复杂情况。只是这种算法的代价是将<strong>内存缩小为原来的一半</strong>，未免太高了一些。</p>
-<img src="/2016/12/21/Jvm_3_垃圾收集算法/2.jpg" alt="2.jpg" title="">
+<img src="/2016/12/26/Jvm_3_垃圾收集算法/2.jpg" alt="2.jpg" title="">
 <h2 id="标记整理算法"><a href="#标记整理算法" class="headerlink" title="标记整理算法"></a>标记整理算法</h2><p>根据老年代的特点，有人提出了另外一种“标记-整理”（Mark-Compact）算法，标记过程仍与“标记-清除”算法一样，但后续步骤不是直接对可回收对象进行清理，而是<strong>让所有存活对象都向一端移动，然后直接清理掉端边界以外的内存</strong>。</p>
-<img src="/2016/12/21/Jvm_3_垃圾收集算法/3.jpg" alt="3.jpg" title="">
+<img src="/2016/12/26/Jvm_3_垃圾收集算法/3.jpg" alt="3.jpg" title="">
 <h2 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h2><p>这种算法并没有什么新的思想，只是根据对象存活周期的不痛将内存划分为几块，一般是<strong>把Java堆分为新生代和老年代</strong>，这样就可以根据各个年代的特点采用最适当的算法。在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用<strong>复制算法</strong>。而老年代中<strong>因为对象存活率高、没有额外空间对它进行分配担保，</strong>就必须使用<strong>“标记-清理”</strong>或者<strong>“标记-整理”</strong>算法来进行回收。</p>
 ]]></content>
     </entry>
@@ -51,21 +51,20 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Redis 安装（linux）]]></title>
-      <url>http://yoursite.com/2016/10/26/Redis%E5%AE%89%E8%A3%85%EF%BC%88Linux%EF%BC%89/</url>
-      <content type="html"><![CDATA[<h1 id="Linux下redis安装"><a href="#Linux下redis安装" class="headerlink" title="Linux下redis安装"></a>Linux下redis安装</h1><p>下载redis安装包，本文中所有安装包为 redis-3.2.1.tar.gz。<br><a id="more"></a></p>
-<p>解压</p>
-<p>检查是否安装gcc<br>执行gcc命令判断，如果未安装，执行 yum -y install gcc</p>
-<p>进入解压后的根目录下 执行make命令</p>
-<p>进入src目录下 执行make install 命令</p>
-<p>编辑 根目录下redis.conf<br>daemonize yes   //改为守护进程</p>
-<p>回到根目录下执行 redis-server redis.conf 启动服务</p>
+      <title><![CDATA[Linux下scp命令跳过登陆验证]]></title>
+      <url>http://yoursite.com/2016/12/18/Linux%E4%B8%8Bscp%E5%91%BD%E4%BB%A4%E8%B7%B3%E8%BF%87%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/</url>
+      <content type="html"><![CDATA[<h1 id="Linux下执行scp命令时跳过登陆验证"><a href="#Linux下执行scp命令时跳过登陆验证" class="headerlink" title="Linux下执行scp命令时跳过登陆验证"></a>Linux下执行scp命令时跳过登陆验证</h1><h2 id="生成安全信任关系证书"><a href="#生成安全信任关系证书" class="headerlink" title="生成安全信任关系证书"></a>生成安全信任关系证书</h2><p>1.在要执行scp命令的机器上 root 用户执行 <code>ssh-keygen</code> 命令，生成建立安全信任关系的证书。<br>[root@Client root]# ssh-keygen<br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/root/.ssh/id_rsa):<br>Enter passphrase (empty for no passphrase):            &lt;– 直接输入回车<br>Enter same passphrase again:                           &lt;– 直接输入回车<br>Your identification has been saved in /root/.ssh/id_rsa.<br>Your public key has been saved in /root/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>49:9c:8a:8f:bc:19:5e:8c:c0:10:d3:15:60:a3:32:1c root@Client<br>[root@Client root]#<br><a id="more"></a></p>
+<p>注意：在程序提示输入passphrase时直接输入回车，表示无证书密码。<br>上述命令将生成私钥证书id_rsa和公钥证书id_rsa.pub，存放在用户家目录的.ssh子目录中。</p>
+<h2 id="复制公钥证书"><a href="#复制公钥证书" class="headerlink" title="复制公钥证书"></a>复制公钥证书</h2><p>将公钥证书id_rsa.pub复制到机器Server的root家目录的.ssh子目录中（无此目录需要创建），同时将文件名更换为authorized_keys。</p>
+<p>[root@Client root]# scp -p .ssh/id_rsa.pub root@192.168.3.206:/root/.ssh/authorized_keys<br>root@192.168.3.206’s password:          &lt;– 输入机器Server的root用户密码<br>id_rsa.pub           100% |<strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong>|   218       00:00<br>[root@Client root]#</p>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>执行 ssh-copy-id root@10.10.60.119</p>
+<p>如果不成功<br>修改./ssh 文件夹的权限为700<br>修改authorized_keys 文件的权限为600</p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[Jvm_1_内存区域与内存溢出异常]]></title>
-      <url>http://yoursite.com/2016/10/22/Jvm_1_%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/</url>
+      <url>http://yoursite.com/2016/12/16/Jvm_1_%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/</url>
       <content type="html"><![CDATA[<p>　　了解和思考Java技术体系中这些技术特性是如何实现的，认识这些技术运作的本质，是自己思考“程序这样写好比好”的基础和前提。当我们在使用一种技术时，如果不在依赖于书本和他人就能得到这些问题的答案，那才算上升到了“不惑”的境界。<br><a id="more"></a></p>
 <h1 id="Java内存区域与内存溢出异常"><a href="#Java内存区域与内存溢出异常" class="headerlink" title="Java内存区域与内存溢出异常"></a>Java内存区域与内存溢出异常</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>　　程序计数器是一块较小的内存空间，它可以看作是当前线程所执行字节码的行号指示器。</p>
 <p>　　Java虚拟机的多线程是通过线程的轮流切换并分配处理器执行时间的方式来实现的，因此为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。</p>
@@ -105,35 +104,21 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Linux下scp命令跳过登陆验证]]></title>
-      <url>http://yoursite.com/2016/10/20/Linux%E4%B8%8Bscp%E5%91%BD%E4%BB%A4%E8%B7%B3%E8%BF%87%E7%99%BB%E9%99%86%E9%AA%8C%E8%AF%81/</url>
-      <content type="html"><![CDATA[<h1 id="Linux下执行scp命令时跳过登陆验证"><a href="#Linux下执行scp命令时跳过登陆验证" class="headerlink" title="Linux下执行scp命令时跳过登陆验证"></a>Linux下执行scp命令时跳过登陆验证</h1><h2 id="生成安全信任关系证书"><a href="#生成安全信任关系证书" class="headerlink" title="生成安全信任关系证书"></a>生成安全信任关系证书</h2><p>1.在要执行scp命令的机器上 root 用户执行 <code>ssh-keygen</code> 命令，生成建立安全信任关系的证书。<br>[root@Client root]# ssh-keygen<br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/root/.ssh/id_rsa):<br>Enter passphrase (empty for no passphrase):            &lt;– 直接输入回车<br>Enter same passphrase again:                           &lt;– 直接输入回车<br>Your identification has been saved in /root/.ssh/id_rsa.<br>Your public key has been saved in /root/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>49:9c:8a:8f:bc:19:5e:8c:c0:10:d3:15:60:a3:32:1c root@Client<br>[root@Client root]#<br><a id="more"></a></p>
-<p>注意：在程序提示输入passphrase时直接输入回车，表示无证书密码。<br>上述命令将生成私钥证书id_rsa和公钥证书id_rsa.pub，存放在用户家目录的.ssh子目录中。</p>
-<h2 id="复制公钥证书"><a href="#复制公钥证书" class="headerlink" title="复制公钥证书"></a>复制公钥证书</h2><p>将公钥证书id_rsa.pub复制到机器Server的root家目录的.ssh子目录中（无此目录需要创建），同时将文件名更换为authorized_keys。</p>
-<p>[root@Client root]# scp -p .ssh/id_rsa.pub root@192.168.3.206:/root/.ssh/authorized_keys<br>root@192.168.3.206’s password:          &lt;– 输入机器Server的root用户密码<br>id_rsa.pub           100% |<strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong>|   218       00:00<br>[root@Client root]#</p>
-<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>执行 ssh-copy-id root@10.10.60.119</p>
-<p>如果不成功<br>修改./ssh 文件夹的权限为700<br>修改authorized_keys 文件的权限为600</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>http://yoursite.com/2016/10/19/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+      <title><![CDATA[Redis 安装（linux）]]></title>
+      <url>http://yoursite.com/2016/12/06/Redis%E5%AE%89%E8%A3%85%EF%BC%88Linux%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="Linux下redis安装"><a href="#Linux下redis安装" class="headerlink" title="Linux下redis安装"></a>Linux下redis安装</h1><p>下载redis安装包，本文中所有安装包为 redis-3.2.1.tar.gz。<br><a id="more"></a></p>
+<p>解压</p>
+<p>检查是否安装gcc<br>执行gcc命令判断，如果未安装，执行 yum -y install gcc</p>
+<p>进入解压后的根目录下 执行make命令</p>
+<p>进入src目录下 执行make install 命令</p>
+<p>编辑 根目录下redis.conf<br>daemonize yes   //改为守护进程</p>
+<p>回到根目录下执行 redis-server redis.conf 启动服务</p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[Spring MVC]]></title>
-      <url>http://yoursite.com/2016/08/09/Spring%20MVC/</url>
+      <url>http://yoursite.com/2016/11/30/Spring%20MVC/</url>
       <content type="html"><![CDATA[<h1 id="Spring-MVC-请求"><a href="#Spring-MVC-请求" class="headerlink" title="Spring MVC 请求"></a>Spring MVC 请求</h1><p>请求的第一站是Spring 的 DispatcherServlet。</p>
 <p>DispatcherServlet 的任务是将请求发送给Spring MVC控制器（controller），DispatcherServlet 根据处理器映射来决定将请求发送到哪里。</p>
 <p>到了控制器，请求会卸下负载（用户提交的信息），控制器开始处理请求。</p>
@@ -176,7 +161,7 @@
     
     <entry>
       <title><![CDATA[Spring4(1) 装配Bean]]></title>
-      <url>http://yoursite.com/2016/07/15/Spring4-1/</url>
+      <url>http://yoursite.com/2016/11/22/Spring4-1/</url>
       <content type="html"><![CDATA[<h1 id="自动化装配Bean"><a href="#自动化装配Bean" class="headerlink" title="自动化装配Bean"></a>自动化装配Bean</h1><h2 id="创建可被发现的bean"><a href="#创建可被发现的bean" class="headerlink" title="创建可被发现的bean"></a>创建可被发现的bean</h2><h3 id="java中进行配置"><a href="#java中进行配置" class="headerlink" title="java中进行配置"></a>java中进行配置</h3><ul>
 <li>在需要被自动化装配的类上加上 <code>@Component</code> 注解，该注解表明该类会作为组件类，并告知spring要为这个类创建bean。</li>
 </ul>
@@ -272,23 +257,23 @@
     
     <entry>
       <title><![CDATA[Hexo环境搭建(windows)]]></title>
-      <url>http://yoursite.com/2016/07/13/Hexo/</url>
+      <url>http://yoursite.com/2016/11/16/Hexo/</url>
       <content type="html"><![CDATA[<p>这是一篇有关如何使用github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的github项目中，域名注册，以及域名的绑定等功能。<br><a id="more"></a></p>
 <h1 id="依赖环境安装"><a href="#依赖环境安装" class="headerlink" title="依赖环境安装"></a>依赖环境安装</h1><h2 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h2><p><a href="https://nodejs.org/en/" target="_blank" rel="external">下载Node.js</a></p>
-<img src="/2016/07/13/Hexo/1.png" alt="1.png" title="">
+<img src="/2016/11/16/Hexo/1.png" alt="1.png" title="">
 <p>本文下载的版本是当时的最新版6.3.0。下载完成后安装即可。</p>
 <p>查看是否安装成功:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
 <p>出现如下图所示内容代表Node.js安装成功</p>
-<img src="/2016/07/13/Hexo/2.png" alt="2.png" title="">
+<img src="/2016/11/16/Hexo/2.png" alt="2.png" title="">
 <h2 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h2><p>请自行谷歌。</p>
 <p>查看是否安装成功:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version</div></pre></td></tr></table></figure>
 <p>出现如下图所示内容代表Git安装成功</p>
-<img src="/2016/07/13/Hexo/3.png" alt="3.png" title="">
+<img src="/2016/11/16/Hexo/3.png" alt="3.png" title="">
 <h2 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h2><p>以管理员身份运行cmd执行如下命令</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>最后会出现大概这么一条信息 <img src="/2016/07/13/Hexo/4.png" alt="4.png" title=""></p>
+<p>最后会出现大概这么一条信息 <img src="/2016/11/16/Hexo/4.png" alt="4.png" title=""></p>
 <p>说明hexo 已经安装成功了。</p>
 <h3 id="初始化Hexo"><a href="#初始化Hexo" class="headerlink" title="初始化Hexo"></a>初始化Hexo</h3><p>接下来，我们选择一个硬盘目录作为存放我们博客的路径，例如我手动在E盘目录下建了一个blog的文件夹，然<br>后执行以下命令完成hexo 的初始化。</p>
 <blockquote>
@@ -304,7 +289,7 @@
 <h2 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置SSH</h2><p>上传文件需要配置ssh key，不然无法上传。 </p>
 <p>首先先检查一下本地是否已经存在ssh key,在Git Bash输入以下指令（任意位置点击鼠标右键），检查是否已经存在了SSH keys。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al ~/.ssh</div></pre></td></tr></table></figure>
-<img src="/2016/07/13/Hexo/5.png" alt="5.png" title="">
+<img src="/2016/11/16/Hexo/5.png" alt="5.png" title="">
 <p>如上图所示，由于我已经配置过，所以存在红框内的三个文件，我们直接把这三个文件删掉即可。</p>
 <p>删除完成后，设置name和email</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name xxx</div><div class="line">git config --global user.email xxx@xxx.com</div></pre></td></tr></table></figure>
@@ -315,7 +300,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C xxx@xxx.com</div></pre></td></tr></table></figure>
 <p>一路按回车键即可，如果设置了密码请记住。 </p>
 <p>这一步在~/.ssh/下生成了两个文件id_rsa 和 id_rsa.pub</p>
-<h2 id="将秘钥拷贝至github"><a href="#将秘钥拷贝至github" class="headerlink" title="将秘钥拷贝至github"></a>将秘钥拷贝至github</h2><p>拷贝id_rsa.pub的内容拷贝至github上，如下图<br><img src="/2016/07/13/Hexo/6.png" alt="6.png" title=""><br><img src="/2016/07/13/Hexo/7.png" alt="7.png" title=""></p>
+<h2 id="将秘钥拷贝至github"><a href="#将秘钥拷贝至github" class="headerlink" title="将秘钥拷贝至github"></a>将秘钥拷贝至github</h2><p>拷贝id_rsa.pub的内容拷贝至github上，如下图<br><img src="/2016/11/16/Hexo/6.png" alt="6.png" title=""><br><img src="/2016/11/16/Hexo/7.png" alt="7.png" title=""></p>
 <h2 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h2><p>输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@github.com</div></pre></td></tr></table></figure>
 <p>成功的话会显示以下的大致内容：</p>
@@ -348,6 +333,21 @@
 <li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT主题</a></li>
 <li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a></li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>http://yoursite.com/2016/11/16/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     </entry>
     

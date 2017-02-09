@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JVM," />
 
 
 
@@ -84,15 +84,20 @@
 
 
 
-<meta name="description" content="活到老，玩到老。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="My Sunshine">
-<meta property="og:url" content="http://yoursite.com/tags/Hexo/index.html">
+<meta name="description" content="垃圾收集算法标记-清除算法最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jvm_3_垃圾收集算法">
+<meta property="og:url" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/index.html">
 <meta property="og:site_name" content="My Sunshine">
-<meta property="og:description" content="活到老，玩到老。">
+<meta property="og:description" content="垃圾收集算法标记-清除算法最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。">
+<meta property="og:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/3.jpg">
+<meta property="og:updated_time" content="2017-02-09T10:41:46.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Sunshine">
-<meta name="twitter:description" content="活到老，玩到老。">
+<meta name="twitter:title" content="Jvm_3_垃圾收集算法">
+<meta name="twitter:description" content="垃圾收集算法标记-清除算法最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。">
+<meta name="twitter:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/1.jpg">
 
 
 
@@ -113,9 +118,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Hexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/"/>
 
-  <title> 标签: Hexo | My Sunshine </title>
+  <title> Jvm_3_垃圾收集算法 | My Sunshine </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +141,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,46 +252,136 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Hexo
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Jvm_3_垃圾收集算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-26T21:16:56+08:00" content="2016-12-26">
+              2016-12-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/26/Jvm_3_垃圾收集算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/Jvm_3_垃圾收集算法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h1><h2 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h2><p>最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。<br><a id="more"></a></p>
+<p>之所以说它是最基础的收集算法，是因为后续的收集算法都是基于这种思路并对其不足进行改进而得到的。它的不足主要有两个：<strong>一个是效率问题</strong>，标记和清除两个过程效率都不高；另一个是<strong>空间问题</strong>，标记清除之后产生大量不连续的内存碎片，空间碎片太多可能会导致以后再程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作</p>
+<img src="/2016/12/26/Jvm_3_垃圾收集算法/1.jpg" alt="1.jpg" title="">
+<h2 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h2><p><strong>为了解决效率问题</strong>，一种称为“复制”（copying）的算法出现了，<strong>它将可用内存按容量划分为大小相等的两块</strong>，每次只使用其中的一块，当着一块内存用完了，<strong>将还存活的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉</strong>。这样使得每次都是对整个半区进行内存回收，内存分配时也不用考虑内存碎片等复杂情况。只是这种算法的代价是将<strong>内存缩小为原来的一半</strong>，未免太高了一些。</p>
+<img src="/2016/12/26/Jvm_3_垃圾收集算法/2.jpg" alt="2.jpg" title="">
+<h2 id="标记整理算法"><a href="#标记整理算法" class="headerlink" title="标记整理算法"></a>标记整理算法</h2><p>根据老年代的特点，有人提出了另外一种“标记-整理”（Mark-Compact）算法，标记过程仍与“标记-清除”算法一样，但后续步骤不是直接对可回收对象进行清理，而是<strong>让所有存活对象都向一端移动，然后直接清理掉端边界以外的内存</strong>。</p>
+<img src="/2016/12/26/Jvm_3_垃圾收集算法/3.jpg" alt="3.jpg" title="">
+<h2 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h2><p>这种算法并没有什么新的思想，只是根据对象存活周期的不痛将内存划分为几块，一般是<strong>把Java堆分为新生代和老年代</strong>，这样就可以根据各个年代的特点采用最适当的算法。在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用<strong>复制算法</strong>。而老年代中<strong>因为对象存活率高、没有额外空间对它进行分配担保，</strong>就必须使用<strong>“标记-清理”</strong>或者<strong>“标记-整理”</strong>算法来进行回收。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/11/16/Hexo/" itemprop="url">
-              
-                <span itemprop="name">Hexo环境搭建(windows)</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-16T18:26:37+08:00"
-              content="2016-11-16" >
-          11-16
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag">#JVM</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/Jvm_2_垃圾收集器与内存分类策略/" rel="next" title="Jvm_2_垃圾收集器与内存分类策略">
+                <i class="fa fa-chevron-left"></i> Jvm_2_垃圾收集器与内存分类策略
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -294,6 +389,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/26/Jvm_3_垃圾收集算法/"
+           data-title="Jvm_3_垃圾收集算法" data-url="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -313,8 +416,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/head.JPG"
@@ -364,6 +476,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">1.</span> <span class="nav-text">垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标记-清除算法"><span class="nav-number">1.1.</span> <span class="nav-text">标记-清除算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制算法"><span class="nav-number">1.2.</span> <span class="nav-text">复制算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标记整理算法"><span class="nav-number">1.3.</span> <span class="nav-text">标记整理算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分代收集算法"><span class="nav-number">1.4.</span> <span class="nav-text">分代收集算法</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -467,6 +590,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
