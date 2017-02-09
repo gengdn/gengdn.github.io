@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JVM," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -84,20 +84,16 @@
 
 
 
-<meta name="description" content="垃圾收集算法标记-清除算法最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。">
+<meta name="description" content="给tomcat指定启动时使用的jdk修改tomcat中bin目录下的 setclasspath.sh 文件在顶部的空白处增加如下内容:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jvm_3_垃圾收集算法">
-<meta property="og:url" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/index.html">
+<meta property="og:title" content="Linux 小记">
+<meta property="og:url" content="http://yoursite.com/2016/02/09/Linux小记/index.html">
 <meta property="og:site_name" content="My Sunshine">
-<meta property="og:description" content="垃圾收集算法标记-清除算法最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。">
-<meta property="og:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/3.jpg">
-<meta property="og:updated_time" content="2017-02-09T10:41:46.391Z">
+<meta property="og:description" content="给tomcat指定启动时使用的jdk修改tomcat中bin目录下的 setclasspath.sh 文件在顶部的空白处增加如下内容:">
+<meta property="og:updated_time" content="2017-02-09T10:56:54.790Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jvm_3_垃圾收集算法">
-<meta name="twitter:description" content="垃圾收集算法标记-清除算法最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。">
-<meta name="twitter:image" content="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/1.jpg">
+<meta name="twitter:title" content="Linux 小记">
+<meta name="twitter:description" content="给tomcat指定启动时使用的jdk修改tomcat中bin目录下的 setclasspath.sh 文件在顶部的空白处增加如下内容:">
 
 
 
@@ -118,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/02/09/Linux小记/"/>
 
-  <title> Jvm_3_垃圾收集算法 | My Sunshine </title>
+  <title> Linux 小记 | My Sunshine </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +269,7 @@
             
             
               
-                Jvm_3_垃圾收集算法
+                Linux 小记
               
             
           </h1>
@@ -285,8 +281,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-26T21:16:56+08:00" content="2016-12-26">
-              2016-12-26
+            <time itemprop="dateCreated" datetime="2016-02-09T18:49:41+08:00" content="2016-02-09">
+              2016-02-09
             </time>
           </span>
 
@@ -296,8 +292,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/26/Jvm_3_垃圾收集算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/Jvm_3_垃圾收集算法/" itemprop="commentsCount"></span>
+                <a href="/2016/02/09/Linux小记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/09/Linux小记/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -320,14 +316,9 @@
       
 
       
-        <h1 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h1><h2 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h2><p>最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。<br><a id="more"></a></p>
-<p>之所以说它是最基础的收集算法，是因为后续的收集算法都是基于这种思路并对其不足进行改进而得到的。它的不足主要有两个：<strong>一个是效率问题</strong>，标记和清除两个过程效率都不高；另一个是<strong>空间问题</strong>，标记清除之后产生大量不连续的内存碎片，空间碎片太多可能会导致以后再程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作</p>
-<img src="/2016/12/26/Jvm_3_垃圾收集算法/1.jpg" alt="1.jpg" title="">
-<h2 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h2><p><strong>为了解决效率问题</strong>，一种称为“复制”（copying）的算法出现了，<strong>它将可用内存按容量划分为大小相等的两块</strong>，每次只使用其中的一块，当着一块内存用完了，<strong>将还存活的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉</strong>。这样使得每次都是对整个半区进行内存回收，内存分配时也不用考虑内存碎片等复杂情况。只是这种算法的代价是将<strong>内存缩小为原来的一半</strong>，未免太高了一些。</p>
-<img src="/2016/12/26/Jvm_3_垃圾收集算法/2.jpg" alt="2.jpg" title="">
-<h2 id="标记整理算法"><a href="#标记整理算法" class="headerlink" title="标记整理算法"></a>标记整理算法</h2><p>根据老年代的特点，有人提出了另外一种“标记-整理”（Mark-Compact）算法，标记过程仍与“标记-清除”算法一样，但后续步骤不是直接对可回收对象进行清理，而是<strong>让所有存活对象都向一端移动，然后直接清理掉端边界以外的内存</strong>。</p>
-<img src="/2016/12/26/Jvm_3_垃圾收集算法/3.jpg" alt="3.jpg" title="">
-<h2 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h2><p>这种算法并没有什么新的思想，只是根据对象存活周期的不痛将内存划分为几块，一般是<strong>把Java堆分为新生代和老年代</strong>，这样就可以根据各个年代的特点采用最适当的算法。在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用<strong>复制算法</strong>。而老年代中<strong>因为对象存活率高、没有额外空间对它进行分配担保，</strong>就必须使用<strong>“标记-清理”</strong>或者<strong>“标记-整理”</strong>算法来进行回收。</p>
+        <h2 id="给tomcat指定启动时使用的jdk"><a href="#给tomcat指定启动时使用的jdk" class="headerlink" title="给tomcat指定启动时使用的jdk"></a>给tomcat指定启动时使用的jdk</h2><p>修改tomcat中bin目录下的 setclasspath.sh 文件<br>在顶部的空白处增加如下内容:<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/bingo/bingoscreen/srv/jdk1.7.0_79</div><div class="line">export JRE_HOME=$JAVA_HOME/jre</div></pre></td></tr></table></figure></p>
+<h2 id="查看tomcat使用的jdk版本"><a href="#查看tomcat使用的jdk版本" class="headerlink" title="查看tomcat使用的jdk版本"></a>查看tomcat使用的jdk版本</h2><p>进入tomcat的bin目录下 执行 ./version.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@i-52593751 bin]# ./version.sh </div><div class="line">Using CATALINA_BASE:   /bingo/bingoscreen/srv/apache-tomcat-7.0.65</div><div class="line">Using CATALINA_HOME:   /bingo/bingoscreen/srv/apache-tomcat-7.0.65</div><div class="line">Using CATALINA_TMPDIR: /bingo/bingoscreen/srv/apache-tomcat-7.0.65/temp</div><div class="line">Using JRE_HOME:        /bingo/bingoscreen/srv/jdk1.7.0_79/jre</div><div class="line">Using CLASSPATH:       /bingo/bingoscreen/srv/apache-tomcat-7.0.65/bin/bootstrap.jar:/bingo/bingoscreen/srv/apache-tomcat-7.0.65/bin/tomcat-juli.jar</div><div class="line">Server version: Apache Tomcat/7.0.65</div><div class="line">Server built:   Oct 9 2015 08:36:58 UTC</div><div class="line">Server number:  7.0.65.0</div><div class="line">OS Name:        Linux</div><div class="line">OS Version:     2.6.32-573.7.1.el6.x86_64</div><div class="line">Architecture:   amd64</div><div class="line">JVM Version:    1.7.0_79-b15</div><div class="line">JVM Vendor:     Oracle Corporation</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -350,7 +341,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag">#JVM</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
           
         </div>
       
@@ -359,13 +350,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/21/Jvm_2_垃圾收集器与内存分类策略/" rel="next" title="Jvm_2_垃圾收集器与内存分类策略">
-                <i class="fa fa-chevron-left"></i> Jvm_2_垃圾收集器与内存分类策略
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/16/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -391,8 +382,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/26/Jvm_3_垃圾收集算法/"
-           data-title="Jvm_3_垃圾收集算法" data-url="http://yoursite.com/2016/12/26/Jvm_3_垃圾收集算法/">
+      <div class="ds-thread" data-thread-key="2016/02/09/Linux小记/"
+           data-title="Linux 小记" data-url="http://yoursite.com/2016/02/09/Linux小记/">
       </div>
     
   </div>
@@ -483,7 +474,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">1.</span> <span class="nav-text">垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标记-清除算法"><span class="nav-number">1.1.</span> <span class="nav-text">标记-清除算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制算法"><span class="nav-number">1.2.</span> <span class="nav-text">复制算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标记整理算法"><span class="nav-number">1.3.</span> <span class="nav-text">标记整理算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分代收集算法"><span class="nav-number">1.4.</span> <span class="nav-text">分代收集算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#给tomcat指定启动时使用的jdk"><span class="nav-number">1.</span> <span class="nav-text">给tomcat指定启动时使用的jdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看tomcat使用的jdk版本"><span class="nav-number">2.</span> <span class="nav-text">查看tomcat使用的jdk版本</span></a></li></ol></div>
             
           </div>
         </section>
