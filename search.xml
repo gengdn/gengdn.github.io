@@ -4,6 +4,17 @@
   
     
     <entry>
+      <title></title>
+      <url>http://yoursite.com/2017/02/09/Linux%E5%B0%8F%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h1 id="Linux-小记"><a href="#Linux-小记" class="headerlink" title="Linux 小记"></a>Linux 小记</h1><hr>
+<p>title: Linux 小记<br>date: 2016-02-09 18:49:41</p>
+<h2 id="tags-linux"><a href="#tags-linux" class="headerlink" title="tags: linux"></a>tags: linux</h2><h2 id="给tomcat指定启动时使用的jdk"><a href="#给tomcat指定启动时使用的jdk" class="headerlink" title="给tomcat指定启动时使用的jdk"></a>给tomcat指定启动时使用的jdk</h2><p>修改tomcat中bin目录下的 setclasspath.sh 文件<br>在顶部的空白处增加如下内容:<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/bingo/bingoscreen/srv/jdk1.7.0_79</div><div class="line">export JRE_HOME=$JAVA_HOME/jre</div></pre></td></tr></table></figure></p>
+<h2 id="查看tomcat使用的jdk版本"><a href="#查看tomcat使用的jdk版本" class="headerlink" title="查看tomcat使用的jdk版本"></a>查看tomcat使用的jdk版本</h2><p>进入tomcat的bin目录下 执行 ./version.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[root@i-52593751 bin]# ./version.sh </div><div class="line">Using CATALINA_BASE:   /bingo/bingoscreen/srv/apache-tomcat-7.0.65</div><div class="line">Using CATALINA_HOME:   /bingo/bingoscreen/srv/apache-tomcat-7.0.65</div><div class="line">Using CATALINA_TMPDIR: /bingo/bingoscreen/srv/apache-tomcat-7.0.65/temp</div><div class="line">Using JRE_HOME:        /bingo/bingoscreen/srv/jdk1.7.0_79/jre</div><div class="line">Using CLASSPATH:       /bingo/bingoscreen/srv/apache-tomcat-7.0.65/bin/bootstrap.jar:/bingo/bingoscreen/srv/apache-tomcat-7.0.65/bin/tomcat-juli.jar</div><div class="line">Server version: Apache Tomcat/7.0.65</div><div class="line">Server built:   Oct 9 2015 08:36:58 UTC</div><div class="line">Server number:  7.0.65.0</div><div class="line">OS Name:        Linux</div><div class="line">OS Version:     2.6.32-573.7.1.el6.x86_64</div><div class="line">Architecture:   amd64</div><div class="line">JVM Version:    1.7.0_79-b15</div><div class="line">JVM Vendor:     Oracle Corporation</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Jvm_3_垃圾收集算法]]></title>
       <url>http://yoursite.com/2016/12/26/Jvm_3_%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h1><h2 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h2><p>最基础的收集算法是“标记-清除”（Mark-Sweep）算法，算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。<br><a id="more"></a></p>
