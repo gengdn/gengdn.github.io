@@ -321,33 +321,12 @@
 
       
         
-          
-            <h2 id="nfs-挂载"><a href="#nfs-挂载" class="headerlink" title="nfs 挂载"></a>nfs 挂载</h2><h3 id="检查-rpcbind-和-nfs服务是否安装"><a href="#检查-rpcbind-和-nfs服务是否安装" class="headerlink" title="检查 rpcbind  和 nfs服务是否安装"></a>检查 rpcbind  和 nfs服务是否安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep rpcbind</div><div class="line">rpm -qa | grep nfs</div></pre></td></tr></table></figure>
-<h3 id="修改文件服务器的-etc-exports-文件"><a href="#修改文件服务器的-etc-exports-文件" class="headerlink" title="修改文件服务器的 /etc/exports 文件"></a>修改文件服务器的 /etc/exports 文件</h3><p>确保上述两个服务安装之后  修改文件服务器的 /etc/exports 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/exports</div></pre></td></tr></table></figure></p>
-<p>加入内容格式：&lt;输出目录&gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg：/bingoLink/elearning 172.133.1.0/24(rw,async,no_root_squash,no_subtree_check)</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>输出目录:<br>/bingoLink/elearning 为本机要共享的文件夹</p>
-</li>
-<li><p>客户端:<br>172.133.1.0/24为可以访问这个共享的计算机<br>–客户端常用的指定方式<br>指定ip地址的主机：192.168.0.200<br>指定子网中的所有主机：192.168.0.0/24 192.168.0.0/255.255.255.0<br>指定域名的主机：david.bsmart.cn<br>指定域中的所有主机：<em>.bsmart.cn<br>所有主机：</em></p>
-</li>
-<li><p>选项：<br>选项用来设置输出目录的访问权限、用户映射等。</p>
-</li>
-</ol>
-<p>NFS主要有3类选项：</p>
-<p>访问权限选项</p>
-<p>设置输出目录只读：ro<br>设置输出目录读写：rw<br>用户映射选项</p>
-<p>all_squash：将远程访问的所有普通用户及所属组都映射为匿名用户或用户组（nfsnobody）；<br>no_all_squash：与all_squash取反（默认设置）；<br>root_squash：将root用户及所属组都映射为匿名用户或用户组（默认设置）；<br>no_root_squash：与rootsquash取反；<br>anonuid=xxx：将远程访问的所有用户都映射为匿名用户，并指定该用户为本地用户（UID=xxx）；<br>anongid=xxx：将远程访问的所有用户组都映射为匿名用户组账户，并指定该匿名用户组账户为本地用户组账户（GID=xxx）；<br>其它选项</p>
-<p>secure：限制客户端只能从小于1024的tcp/ip端口连接nfs服务器（默认设置）；<br>insecure：允许客户端从大于1024的tcp/ip端口连接服务器；<br>sync：将数据同步写入内存缓冲区与磁盘中，效率低，但可以保证数据的一致性；<br>async：将数据先保存在内存缓冲区中，必要时才写入磁盘；<br>wdelay：检查是否有相关的写操作，如果有则将这些写操作一起执行，这样可以提高效率（默认设置）；<br>no_wdelay：若有写操作则立即执行，应与sync配合使用；<br>subtree：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限(默认设置)；<br>no_subtree：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率；</p>
-<h3 id="修改完成后启动nfs服务"><a href="#修改完成后启动nfs服务" class="headerlink" title="修改完成后启动nfs服务"></a>修改完成后启动nfs服务</h3><p>为了使NFS服务器能正常工作，需要启动rpcbind和nfs两个服务，并且rpcbind一定要先于nfs启动。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># service rpcbind start</div><div class="line"># service nfs start</div></pre></td></tr></table></figure></p>
-<p>查询NFS服务器状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># service rpcbind status</div><div class="line"># service nfs status</div></pre></td></tr></table></figure></p>
-<p>停止NFS服务器</p>
-<p>要停止NFS运行时，需要先停止nfs服务再停止rpcbind 服务，对于系统中有其他服务(如NIS)需要使用时，不需要停止rpcbind 服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># service nfs stop</div><div class="line"># service rpcbind stop</div></pre></td></tr></table></figure></p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>服务器端使用showmount命令查询NFS的共享状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># showmount -e　　　　//默认查看自己共享的服务，前提是要DNS能解析自己，不然容易报错</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># showmount -a　　　　//显示已经与客户端连接上的目录信息</div></pre></td></tr></table></figure>
-<p>客户端使用showmount命令查询NFS的共享状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># showmount -e NFS服务器IP</div><div class="line">eg：showmount -e 172.133.41.171</div></pre></td></tr></table></figure></p>
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="http://www.cnblogs.com/mchina/archive/2013/01/03/2840040.html" target="_blank" rel="external">http://www.cnblogs.com/mchina/archive/2013/01/03/2840040.html</a></p>
-
-          
+          <h2 id="nfs-挂载"><a href="#nfs-挂载" class="headerlink" title="nfs 挂载"></a>nfs 挂载</h2><h3 id="检查-rpcbind-和-nfs服务是否安装"><a href="#检查-rpcbind-和-nfs服务是否安装" class="headerlink" title="检查 rpcbind  和 nfs服务是否安装"></a>检查 rpcbind  和 nfs服务是否安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep rpcbind</div><div class="line">rpm -qa | grep nfs</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/10/Linux-nfs挂载/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="nfs 挂载检查 rpcbind  和 nfs服务是否安装12rpm -qa | grep rpcbindrpm -qa | grep nfs
-修改文件服务器的 /etc/exports 文件确保上述两个服务安装之后  修改文件服务器的 /etc/exports 文件1vim /etc/exports
-加入内容格式：&amp;lt;输出目录&amp;gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端">
+<meta name="description" content="nfs 挂载检查 rpcbind  和 nfs服务是否安装12rpm -qa | grep rpcbindrpm -qa | grep nfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux nfs 挂载">
 <meta property="og:url" content="http://yoursite.com/2017/02/10/Linux-nfs挂载/index.html">
 <meta property="og:site_name" content="My Sunshine">
-<meta property="og:description" content="nfs 挂载检查 rpcbind  和 nfs服务是否安装12rpm -qa | grep rpcbindrpm -qa | grep nfs
-修改文件服务器的 /etc/exports 文件确保上述两个服务安装之后  修改文件服务器的 /etc/exports 文件1vim /etc/exports
-加入内容格式：&amp;lt;输出目录&amp;gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端">
-<meta property="og:updated_time" content="2017-02-09T11:06:33.987Z">
+<meta property="og:description" content="nfs 挂载检查 rpcbind  和 nfs服务是否安装12rpm -qa | grep rpcbindrpm -qa | grep nfs">
+<meta property="og:updated_time" content="2017-02-09T11:08:20.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux nfs 挂载">
-<meta name="twitter:description" content="nfs 挂载检查 rpcbind  和 nfs服务是否安装12rpm -qa | grep rpcbindrpm -qa | grep nfs
-修改文件服务器的 /etc/exports 文件确保上述两个服务安装之后  修改文件服务器的 /etc/exports 文件1vim /etc/exports
-加入内容格式：&amp;lt;输出目录&amp;gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端">
+<meta name="twitter:description" content="nfs 挂载检查 rpcbind  和 nfs服务是否安装12rpm -qa | grep rpcbindrpm -qa | grep nfs">
 
 
 
@@ -323,6 +317,7 @@
 
       
         <h2 id="nfs-挂载"><a href="#nfs-挂载" class="headerlink" title="nfs 挂载"></a>nfs 挂载</h2><h3 id="检查-rpcbind-和-nfs服务是否安装"><a href="#检查-rpcbind-和-nfs服务是否安装" class="headerlink" title="检查 rpcbind  和 nfs服务是否安装"></a>检查 rpcbind  和 nfs服务是否安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep rpcbind</div><div class="line">rpm -qa | grep nfs</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="修改文件服务器的-etc-exports-文件"><a href="#修改文件服务器的-etc-exports-文件" class="headerlink" title="修改文件服务器的 /etc/exports 文件"></a>修改文件服务器的 /etc/exports 文件</h3><p>确保上述两个服务安装之后  修改文件服务器的 /etc/exports 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/exports</div></pre></td></tr></table></figure></p>
 <p>加入内容格式：&lt;输出目录&gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg：/bingoLink/elearning 172.133.1.0/24(rw,async,no_root_squash,no_subtree_check)</div></pre></td></tr></table></figure></p>
 <ol>
