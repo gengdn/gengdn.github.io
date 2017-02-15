@@ -321,8 +321,11 @@
 
       
         
-          <p><a href="http://www.linuxidc.com/Linux/2016-04/130350.htm">http://www.linuxidc.com/Linux/2016-04/130350.htm</a></p>
-<h1 id="nignx-负载均衡配置"><a href="#nignx-负载均衡配置" class="headerlink" title="nignx 负载均衡配置"></a>nignx 负载均衡配置</h1><p>本文实验采用同一个IP，不同端口来模拟负载均衡，分别在三个文件夹下下放入不同的三张图片，<strong>图片的名称相同</strong>,在这个三个文件夹下使用<code>http-server</code>命令开启服务器，分别指定端口为8881,8882,8883。<br>
+          <h1 id="nignx-负载均衡配置"><a href="#nignx-负载均衡配置" class="headerlink" title="nignx 负载均衡配置"></a>nignx 负载均衡配置</h1><p>Nginx常用负载均衡算法：</p>
+<ol>
+<li>轮询（默认算法）——每个请求会依次分配给后端不同的应用程序服务器，不理会后端服务器的实际压力</li>
+<li>加权轮询——权重越大的服务器，被分配到的次数就会越多，通常用于后端服务器性能不一致的情况</li>
+<li>IP HASH——当同IP进行重复访问时会被指定到上次访问到的服务器，可以解决动态网站SESSION共享问题
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/02/15/nginx-负载均衡配置/#more" rel="contents">
               阅读全文 &raquo;
