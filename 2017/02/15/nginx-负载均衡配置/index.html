@@ -106,7 +106,7 @@ IP HASH——当同IP进行重复访问时会被指定到上次访问到的服�
 <meta property="og:image" content="http://yoursite.com/2017/02/15/nginx-负载均衡配置/3.gif">
 <meta property="og:image" content="http://yoursite.com/2017/02/15/nginx-负载均衡配置/4.gif">
 <meta property="og:image" content="http://yoursite.com/2017/02/15/nginx-负载均衡配置/5.jpg">
-<meta property="og:updated_time" content="2017-02-16T11:01:51.941Z">
+<meta property="og:updated_time" content="2017-02-16T11:11:44.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nignx 负载均衡配置">
 <meta name="twitter:description" content="nignx 负载均衡配置Nginx常用负载均衡算法：
@@ -359,7 +359,7 @@ IP HASH——当同IP进行重复访问时会被指定到上次访问到的服�
 <img src="/2017/02/15/nginx-负载均衡配置/4.gif" alt="4.gif" title="">
 <h2 id="nginx-高可用"><a href="#nginx-高可用" class="headerlink" title="nginx 高可用"></a>nginx 高可用</h2><p>Nginx高可用的实现，利用backup标签，可以实现高可用，当主服务挂掉后，backup服务器会自动接管服务，当主服务恢复后，backup也会自动放弃服务。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">	upstream high_availability  &#123;</div><div class="line">		server 10.10.60.82:8881;</div><div class="line">		server 10.10.60.82:8882 backup;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen       8866;#端口号</div><div class="line">        server_name  localhost;#当前服务的域名</div><div class="line">        location /h_a &#123;</div><div class="line">           proxy_pass  http://high_availability/;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在上面的配置中，当用户访问<code>http://localhost:8866/h_a/logo.jpg</code>地址时，访问到的图片是一直是8881端口内的图片名，当我把8881这个端口对应的服务<strong>停止</strong>之后，再次访问该路径，该请求一直在等待，知道<strong>一分钟</strong>之后,backup对应的机器，也就是8882端口对应的图片显示出来。</p>
+<p>在上面的配置中，当用户访问<code>http://localhost:8866/h_a/logo.jpg</code>地址时，访问到的图片是一直是8881端口内的图片名，当我把8881这个端口对应的服务<strong>停止</strong>之后，再次访问该路径，该请求一直在等待，直到<strong>一分钟</strong>之后,backup对应的机器，也就是8882端口对应的图片显示出来。</p>
 <img src="/2017/02/15/nginx-负载均衡配置/5.jpg" alt="5.jpg" title="">
 <p>起初我认为该请求首先由8881端口的服务器进行处理，但是该服务已经停止，所以尝试失败之后，在此常识请求backup对应的服务器，拿到图片。<br>那么我认为这个时间和<code>max_fails</code>（最大失败次数）,<code>fail_timeout</code>（失败超时时间）两个参数的值有关，实际的等待时间为两者之积，然后我将配置改成如下，增加了这两个参数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">	upstream high_availability  &#123;</div><div class="line">		server 10.10.60.82:8881 max_fails=2 fail_timeout=2s ;</div><div class="line">		server 10.10.60.82:8882 backup;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen       8866;#端口号</div><div class="line">        server_name  localhost;#当前服务的域名</div><div class="line">        location /h_a &#123;</div><div class="line">           proxy_pass  http://high_availability/;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -369,7 +369,7 @@ IP HASH——当同IP进行重复访问时会被指定到上次访问到的服�
 <p>其中 <code>max_fails</code> 和 <code>fail_timeout</code> 参数的意思是在某服务器失败次数达到<code>max_fails</code> 次时，那么判定该机器在 <code>fail_timeout</code> 时间内不可用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">proxy_connect_timeout 90; #nginx跟后端服务器连接超时时间(代理连接超时)</div><div class="line">proxy_send_timeout 90; #后端服务器数据回传时间(代理发送超时)</div><div class="line">proxy_read_timeout 90; #连接成功后，后端服务器响应时间(代理接收超时)</div></pre></td></tr></table></figure>
 <h2 id="配置文件下载地址"><a href="#配置文件下载地址" class="headerlink" title="配置文件下载地址"></a>配置文件下载地址</h2><p><a href="https://github.com/gengdn/nginx_load_balancing.git" target="_blank" rel="external">https://github.com/gengdn/nginx_load_balancing.git</a></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p> <a href="http://www.linuxidc.com/Linux/2016-04/130350.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2016-04/130350.htm</a></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p> <a href="http://nginx.org/en/docs/" target="_blank" rel="external">Nginx官方文档</a><br> <a href="http://www.linuxidc.com/Linux/2016-04/130350.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2016-04/130350.htm</a></p>
 
       
     </div>
