@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[tomcat内存设置]]></title>
+      <url>http://yoursite.com/2017/02/26/tomcat%E5%86%85%E5%AD%98%E8%AE%BE%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<h1 id="tomcat内存设置"><a href="#tomcat内存设置" class="headerlink" title="tomcat内存设置"></a>tomcat内存设置</h1><h2 id="java内存溢出"><a href="#java内存溢出" class="headerlink" title="java内存溢出"></a>java内存溢出</h2><p>常见的java内存溢出分为以下三种：</p>
+<ol>
+<li>java.lang.OutOfMemoryError: Java heap space —-JVM Heap（堆）溢出<a id="more"></a>
+　　JVM在启动的时候会自动设置JVM Heap的值，<strong>其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)不可超过物理内存。</strong><br>　　可以利用JVM提供的-Xmn -Xms -Xmx等选项可进行设置。Heap的大小是Young Generation 和Tenured Generaion 之和。<br>　　在JVM中如果98％的时间是用于GC，且可用的Heap size 不足2％的时候将抛出此异常信息。<br>　　解决方法：手动设置JVM Heap（堆）的大小。  </li>
+<li>java.lang.OutOfMemoryError: PermGen space  —- PermGen space溢出。<br>　　PermGen space的全称是Permanent Generation space，是指内存的永久保存区域。<br>为什么会内存溢出，这是由于这块内存主要是被JVM存放Class和Meta信息的，Class在被Load的时候被放入PermGen space区域，它和存放Instance的Heap区域不同,sun的 GC不会在主程序运行期对PermGen space进行清理，所以如果你的APP会载入很多CLASS的话，就很可能出现PermGen space溢出。</li>
+</ol>
+<p>　　解决方法： 手动设置MaxPermSize大小</p>
+<ol>
+<li>java.lang.StackOverflowError   —- 栈溢出<br>　　栈溢出了，JVM依然是采用栈式的虚拟机，这个和C和Pascal都是一样的。函数的调用过程都体现在堆栈和退栈上了。<br>　　调用构造函数的 “层”太多了，以致于把栈区溢出了。<br>　　通常来讲，一般栈区远远小于堆区的，因为函数调用过程往往不会多于上千层，而即便每个函数调用需要 1K的空间(这个大约相当于在一个C函数内声明了256个int类型的变量)，那么栈区也不过是需要1MB的空间。通常栈的大小是1－2MB的。<br>　　通常递归也不要递归的层次过多，很容易溢出。</li>
+</ol>
+<p>　　解决方法：修改程序。
+　　</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>linux下的tamcat修改catalina.sh 文件，该文件位于tocat的bin目录下。<br>修改位置为注释下的第一行，也就是cygwin=false前。<br><code>JAVA_OPTS=&quot;-server -Xms512m -Xmx1024m -XX:PermSize=64M -XX:MaxPermSize=128m</code><br>如下图：<br><img src="/2017/02/26/tomcat内存设置/1.png" alt="1.png" title=""></p>
+<h2 id="jvm参数说明"><a href="#jvm参数说明" class="headerlink" title="jvm参数说明"></a>jvm参数说明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">-server:一定要作为第一个参数，在多个CPU时性能佳 </div><div class="line"></div><div class="line">-Xms：java Heap初始大小。 默认是物理内存的1/64。</div><div class="line">-Xmx：java heap最大值。建议均设为物理内存的一半。不可超过物理内存。</div><div class="line"></div><div class="line">-XX:PermSize:设定内存的永久保存区初始大小，缺省值为64M。（我用visualvm.exe查看的）</div><div class="line">-XX:MaxPermSize:设定内存的永久保存区最大 大小，缺省值为64M。（我用visualvm.exe查看的）</div><div class="line"></div><div class="line">-XX:SurvivorRatio=2  :生还者池的大小,默认是2，如果垃圾回收变成了瓶颈，您可以尝试定制生成池设置</div><div class="line">-XX:NewSize: 新生成的池的初始大小。 缺省值为2M。</div><div class="line">-XX:MaxNewSize: 新生成的池的最大大小。   缺省值为32M。</div><div class="line"></div><div class="line">如果 JVM 的堆大小大于 1GB，则应该使用值：-XX:newSize=640m -XX:MaxNewSize=640m -XX:SurvivorRatio=16，或者将堆的总大小的 50% 到 60% 分配给新生成的池。调大新对象区，减少Full GC次数。</div><div class="line"></div><div class="line">+XX:AggressiveHeap 会使得 Xms没有意义。这个参数让jvm忽略Xmx参数,疯狂地吃完一个G物理内存,再吃尽一个G的swap。 </div><div class="line">-Xss：每个线程的Stack大小，“-Xss 15120” 这使得JBoss每增加一个线程（thread)就会立即消耗15M内存，而最佳值应该是128K,默认值好像是512k. </div><div class="line"></div><div class="line">-verbose:gc 现实垃圾收集信息 </div><div class="line">-Xloggc:gc.log 指定垃圾收集日志文件 </div><div class="line">-Xmn：young generation的heap大小，一般设置为Xmx的3、4分之一 </div><div class="line">-XX:+UseParNewGC ：缩短minor收集的时间 </div><div class="line">-XX:+UseConcMarkSweepGC ：缩短major收集的时间 此选项在Heap Size 比较大而且Major收集时间较长的情况下使用更合适。</div><div class="line"></div><div class="line">-XX:userParNewGC 可用来设置并行收集【多CPU】</div><div class="line">-XX:ParallelGCThreads 可用来增加并行度【多CPU】</div><div class="line">-XX:UseParallelGC 设置后可以使用并行清除收集器【多CPU】</div></pre></td></tr></table></figure>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.cnblogs.com/-blog/p/5702955.html" target="_blank" rel="external">http://www.cnblogs.com/-blog/p/5702955.html</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux查看系统信息常用命令]]></title>
       <url>http://yoursite.com/2017/02/26/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<h1 id="Linux查看系统信息常用命令"><a href="#Linux查看系统信息常用命令" class="headerlink" title="Linux查看系统信息常用命令"></a>Linux查看系统信息常用命令</h1><h2 id="查看版本信息"><a href="#查看版本信息" class="headerlink" title="查看版本信息"></a>查看版本信息</h2><ol>
@@ -379,6 +400,21 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>http://yoursite.com/2016/11/16/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo环境搭建(windows)]]></title>
       <url>http://yoursite.com/2016/11/16/Hexo/</url>
       <content type="html"><![CDATA[<p>这是一篇有关如何使用github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的github项目中，域名注册，以及域名的绑定等功能。<br><a id="more"></a></p>
@@ -456,21 +492,6 @@
 <li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT主题</a></li>
 <li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a></li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>http://yoursite.com/2016/11/16/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     </entry>
     
