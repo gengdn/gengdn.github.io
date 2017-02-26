@@ -8,7 +8,8 @@
       <url>http://yoursite.com/2017/02/26/tomcat%E5%86%85%E5%AD%98%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h1 id="tomcat内存设置"><a href="#tomcat内存设置" class="headerlink" title="tomcat内存设置"></a>tomcat内存设置</h1><h2 id="java内存溢出"><a href="#java内存溢出" class="headerlink" title="java内存溢出"></a>java内存溢出</h2><p>常见的java内存溢出分为以下三种：</p>
 <ol>
-<li>java.lang.OutOfMemoryError: Java heap space —-JVM Heap（堆）溢出</li>
+<li>java.lang.OutOfMemoryError: Java heap space —-JVM Heap（堆）溢出<a id="more"></a>
+</li>
 </ol>
 <blockquote>
 <p>JVM在启动的时候会自动设置JVM Heap的值，<strong>其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)不可超过物理内存。</strong></p>
